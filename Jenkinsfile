@@ -33,4 +33,12 @@ stage("Push Image to Docker Hub"){
     }
 
 
-slackSend channel: 'Midhun K M', message: 'hello'
+def attachments = [
+  [
+    text: 'I find your lack of faith disturbing!',
+    fallback: 'Hey, Vader seems to be mad at you.',
+    color: '#ff0000'
+  ]
+]
+
+slackSend(channel: "Midhun K M", attachments: attachments)
