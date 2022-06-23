@@ -29,9 +29,8 @@ stage("Push Image to Docker Hub"){
              sh 'docker run -d --rm --name myweb -p 80:80 kmmidhun/angular-web:1'
              }
     }
-    
-slackSend color: "good", message: "Message from Jenkins Pipeline"
 
+slackSend color: "good", message: "Message from Jenkins Pipeline"
 def attachments = [
   [
     text: 'I find your lack of faith disturbing!',
