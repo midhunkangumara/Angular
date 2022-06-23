@@ -1,5 +1,3 @@
-
-
 node{
 stage("Git Clone"){
     sh 'rm -rf *'
