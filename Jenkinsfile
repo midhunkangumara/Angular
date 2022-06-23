@@ -33,6 +33,7 @@ stage("Push Image to Docker Hub"){
     }
 
 
+
 def attachments = [
   [
     text: 'I find your lack of faith disturbing!',
