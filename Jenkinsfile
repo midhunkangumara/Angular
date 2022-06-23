@@ -1,6 +1,6 @@
 
 
-node('web-server') {
+node{
 stage("Git Clone"){
     sh 'rm -rf *'
     sh 'git clone https://github.com/midhunkangumara/Angular.git'
