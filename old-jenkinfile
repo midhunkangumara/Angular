@@ -13,6 +13,8 @@ node{
                 ])
             }
         }
+
+        
 }
 stage("Docker build"){
     //sh 'mv Angular/* .'
