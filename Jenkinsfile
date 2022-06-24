@@ -35,6 +35,7 @@ stage("Push Image to Docker Hub"){
                sh 'docker pull kmmidhun/angular-web:1'
                }
  stage('running container'){
+             sh 'docker stop myweb'
              sh 'docker run -d --rm --name myweb -p 80:80 kmmidhun/angular-web:1'
              }
                notifySuccessful()
