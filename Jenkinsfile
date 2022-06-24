@@ -1,10 +1,21 @@
 node{
-stage("Git Clone"){
-    sh 'rm -rf *'
-    sh 'git clone https://github.com/midhunkangumara/Angular.git'
+   stages {
+        /* checkout repo */
+        stage('Checkout SCM') {
+            steps {
+                checkout([
+                 $class: 'GitSCM',
+                 branches: [[name: 'main']],
+                 userRemoteConfigs: [[
+                    url: 'https://github.com/midhunkangumara/Angular.git',
+                    credentialsId: 'GITHUB',
+                 ]]
+                ])
+            }
+        }
 }
 stage("Docker build"){
-    sh 'mv Angular/* .'
+    //sh 'mv Angular/* .'
     sh 'docker version'
     sh 'docker build -t angular-web .'
     sh 'docker image list'
