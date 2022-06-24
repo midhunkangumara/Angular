@@ -50,5 +50,4 @@ def attachments = [
   ]
 ]
 
-
 slackSend(channel: "Midhun K M", attachments: attachments)
