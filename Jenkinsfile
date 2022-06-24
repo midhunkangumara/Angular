@@ -1,59 +1,60 @@
 
- 
-pipeline {
-    /* specify nodes for executing */
-  agent any
-    stages {
-        /* checkout repo */
-        stage('Checkout SCM') {
-            steps {
-                checkout([
+node {
+     try {
+    notifyStarted()
+stage('cloning'){
+      checkout([
                  $class: 'GitSCM',
                  branches: [[name: 'main']],
                  userRemoteConfigs: [[
                     url: 'https://github.com/midhunkangumara/Angular.git',
-                    credentialsId: 'GITHUB',
+                    
                  ]]
                 ])
-            }
-        }
-         stage("Docker build"){
-    //sh 'mv Angular/* .'
-    steps {  sh 'docker version'
-        sh 'docker build -t angular-web .'
-        sh 'docker image list'
-        sh 'docker tag angular-web kmmidhun/angular-web:1'
     }
+
+stage("Docker build"){
+    sh 'docker version'
+    sh 'docker build -t angular-web .'
+    sh 'docker image list'
+    sh 'docker tag angular-web kmmidhun/angular-web:1'
   }
 stage("Docker Login"){
-       steps { withCredentials([string(credentialsId: 'DOCKER_HUB_PASSWORD', variable: 'PASSWORD')]) {
+        withCredentials([string(credentialsId: 'DOCKER_HUB_PASSWORD', variable: 'PASSWORD')]) {
             sh 'docker login -u kmmidhun -p $PASSWORD'
-       }
         }
     }
 stage("Push Image to Docker Hub"){
-      steps { sh 'docker push  kmmidhun/angular-web:1'
-      }
+        sh 'docker push  kmmidhun/angular-web:1'
     }
 
  stage("pull image from repo"){
-        steps { sh 'pwd'
+               sh 'pwd'
                sh 'hostnamectl'
                sh 'docker version'
                sh 'docker pull kmmidhun/angular-web:1'
-        }
-    }
+               }
  stage('running container'){
-           steps {  sh 'docker run -d --rm --name myweb -p 80:80 kmmidhun/angular-web:1'
+             sh 'docker run -d --rm --name myweb -p 80:80 kmmidhun/angular-web:1'
              }
-      }
-    }
+               notifySuccessful()
+  } catch (e) {
+    currentBuild.result = "FAILED"
+    notifyFailed()
+    throw e
+  }
+}    
+def notifyStarted() {
  
-    /* Cleanup workspace */
-    post {
-       always {
-           deleteDir()
-       }
-   }
+  slackSend (color: '#FFFF00', message: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
+
+}
+def notifySuccessful() {
+  slackSend (color: '#00FF00', message: "SUCCESSFUL: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
+}
+
+def notifyFailed() {
+  slackSend (color: '#FF0000', message: "FAILED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
+
 }
 
