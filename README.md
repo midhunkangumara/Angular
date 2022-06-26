@@ -22,9 +22,9 @@
 
    •  LOCAL SEVER (Local Git repository)(UBUNTU 20.04)
    
-   •  EC2 SERVER-1 (As Jenkins Server)(UBUNTU 20.04)
+   •  EC2 SERVER-1 (As A Worker Node For Jenkins To Host Container)(UBUNTU 20.04)
    
-   •  EC2 SERVER-2 (As A Worker Node For Jenkins To Host Container)(UBUNTU 20.04)
+   •  EC2 SERVER-2 (As Jenkins Server)(UBUNTU 20.04)
    
 ## INSTALLATION AND SETUPS
 
@@ -151,7 +151,7 @@ List global git settings to confirm your git configuration:
   The -u flag sets the remote origin as the default. This lets you later easily just do git push and git pull without having to specifying an origin since we always want GitHub in this case.
   
   
-### EC2 SERVER-1 (As Jenkins Server)(UBUNTU 20.04)
+### EC2 SERVER-1 (As A Worker Node For Jenkins To Host Container)(UBUNTU 20.04)
 
 #### DOCKER
 
@@ -206,5 +206,15 @@ To run the docker command without sudo, add all non-root users who are supposed 
        
 To activate the changes to groups, run the following command:
 
-    $ newgrp docker 
-    $ groups
+       $ newgrp docker 
+       $ groups
+       
+  
+ #### JAVA
+ 
+ 
+ ###  EC2 SERVER-2 (As Jenkins Server)(UBUNTU 20.04)
+ 
+ 
+ 
+ 
