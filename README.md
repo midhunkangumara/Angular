@@ -118,7 +118,7 @@ List global git settings to confirm your git configuration:
   
   This step creates a hidden .git directory in your project folder which the git software recognizes and uses to store all the metadata and version history   for the project. 
 
-    - Add the files to Git index
+###### Add the files to Git index
     
          $ git add -A
          or
@@ -126,5 +126,28 @@ List global git settings to confirm your git configuration:
          
    The git add command is used to tell git which files to include in a commit, and the -A argument means “include all”.
    
- Commit Added Files  
+ ###### Commit Added Files  
+ 
+         $ git commit -m 'Added my project'
          
+  The git commit command creates a new commit with all files that have been “added”. the -m 'Added my project' is the message that will be included           alongside the commit, used for future reference to understand the commit.  
+  
+ ###### Add new remote origin (in this case, GitHub)
+ 
+         $ git remote add origin git@github.com:sammy/my-new-project.git
+         
+   In git, a “remote” refers to a remote version of the same repository, which is typically on a server somewhere (in this case GitHub.) “origin” is the   default name git gives to a remote server (you can have multiple remotes) so git remote add origin is instructing git to add the URL of the default remote server for this repo.    
+   
+###### Rename Branch 
+
+      $ git branch -m main
+   
+###### Push to GitHub
+ 
+          $ git push -u -f origin main
+          
+   With this, there are a few things to note. The -f flag stands for force. This will automatically overwrite everything in the remote directory. We’re only using it here to overwrite the README that GitHub automatically initialized. If you skipped that, the -f flag isn’t really necessary.       
+   
+  The -u flag sets the remote origin as the default. This lets you later easily just do git push and git pull without having to specifying an origin since we always want GitHub in this case.
+  
+  
