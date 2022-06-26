@@ -28,7 +28,7 @@
    
 ## INSTALLATION AND SETUPS
 
-### LOCAL SEVER (For Local Git repository)
+### LOCAL SEVER (For Local Git repository)(UBUNTU 20.04)
 
 #### GIT 
 
@@ -108,7 +108,7 @@ List global git settings to confirm your git configuration:
      ![repo2](https://user-images.githubusercontent.com/104076975/175821907-3465b814-26bd-4cfb-b533-83e3993e6cf3.png)
 
      
-  Step 2: Initialize Git in the project folder
+  Step 2: Initialize Git in the project folder (folder includes application code and dockerfile)
       
   From your terminal, run the following commands after navigating to folder you would like to add:
   Make sure you are in the root directory of the project you want to push to GitHub and run:
@@ -151,3 +151,60 @@ List global git settings to confirm your git configuration:
   The -u flag sets the remote origin as the default. This lets you later easily just do git push and git pull without having to specifying an origin since we always want GitHub in this case.
   
   
+### EC2 SERVER-1 (As Jenkins Server)(UBUNTU 20.04)
+
+#### DOCKER
+
+ To use the latest version of Docker, we will install it from the official Docker repository. So, start by adding the GPG key for the official Docker repository to your system, after that add the repository configuration to the APT source with the following commands.
+ 
+      $ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+      $ sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu focal stable" 
+      
+ Now update the APT package cache to include the new Docker packages to the system using the following command.
+ 
+     $ sudo apt update
+     
+ Next, install the Docker package as shown.
+ 
+     $ sudo apt install docker-ce
+     
+     ![dock](https://user-images.githubusercontent.com/104076975/175823357-59cbc9dd-56ea-4d17-80d1-8d88669bc966.png)
+
+     
+   During the Docker package installation process, the package installer triggers the systemd (system and service manager) to automatically start and enable the docker service. Using the following commands to confirm that the docker service is active and is enabled to automatically start at system startup. Also, check its status:
+   
+       $ sudo systemctl is-active docker
+       $ sudo systemctl is-enabled docker
+       $ sudo systemctl status docker
+       
+       ![dock1](https://user-images.githubusercontent.com/104076975/175823363-3ed1cfda-5c2b-42cd-93dc-985c86688fda.png)
+
+       
+ To check the version of Docker CE installed on your system, run the following command:
+ 
+       $ docker version
+       
+ 
+
+You can view available docker usage commands by running the docker command without any options or arguments:
+
+       $ docker
+       
+       
+   ![dock4](https://user-images.githubusercontent.com/104076975/175823382-7c574ab7-a2f3-4002-94a3-7730749b0c7f.png)
+
+###### Manage Docker as a non-root User with sudo Command
+
+    By default, the Docker daemon binds to a UNIX socket (instead of a TCP port) which is owned by the user root. Therefore the Docker daemon always runs as the root user and to run the docker command, you need to use sudo.
+    Besides, during the Docker package installation, a group called docker is created. When the Docker daemon starts, it creates a UNIX socket accessible by members of the docker group (which grants privileges equivalent to the root user).
+
+To run the docker command without sudo, add all non-root users who are supposed to access docker, in the docker group as follows. In this example, the command adds the currently logged on user ($USER) or username to the docker group:
+
+       $ sudo usermod -aG docker $USER
+         OR
+       $ sudo usermod -aG docker username
+       
+To activate the changes to groups, run the following command:
+
+    $ newgrp docker 
+    $ groups
