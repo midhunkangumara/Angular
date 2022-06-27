@@ -480,16 +480,16 @@ Scroll all the way down on the Configure System page until you see the settings 
   
   2. Scroll down to the Security heading and click Manage Credentials.
   
-   ![Screenshot from 2022-06-27 12-01-09](https://user-images.githubusercontent.com/104076975/175874319-3697b64a-7fef-4e87-8ccf-ed17891bc3d1.png)
-  
+  ![mc1](https://user-images.githubusercontent.com/104076975/175932628-91eef672-580a-4b03-a10a-1095cc973251.png)
+
   3. Click Jenkins under the Stores scoped to Jenkins heading.
-  4. 
-  ![Screenshot from 2022-06-27 12-06-27](https://user-images.githubusercontent.com/104076975/175875026-937e62de-dbdb-4e23-bf42-cee6feaba4e3.png)
+  
+![mc2](https://user-images.githubusercontent.com/104076975/175932661-5aca07f5-dec6-4afe-8c85-2b35011585f5.png)
 
   
   4. Click Global credentials (unrestricted) under the System heading.
-      
-   ![Screenshot from 2022-06-27 12-07-23](https://user-images.githubusercontent.com/104076975/175875132-0cb2d72f-5464-44a3-b4ec-25b9852ed109.png)
+      ![mc3](https://user-images.githubusercontent.com/104076975/175932680-9b5f83b9-5f47-49be-a68b-fccf12ecf114.png)
+
 
   5. If no credentials exist, you can click the How about adding some credentials? link, otherwise click Add Credentials from the left.
   6. Select the type of credentials you want to store from the Kind field’s dropdown box, complete the fields and click OK. You can add the following types      of credentials:
@@ -498,10 +498,11 @@ Scroll all the way down on the Configure System page until you see the settings 
       •  Secret files
       •  Secret text
       •  Certificates
+      
+![mc4](https://user-images.githubusercontent.com/104076975/175932742-12f370e9-6ebe-4a7b-a9a3-48c80b8315ec.png)
 
-![Screenshot from 2022-06-27 12-07-54](https://user-images.githubusercontent.com/104076975/175875218-99cac4f6-6d95-491e-8c76-9262dd42d7cd.png)
+![mc5](https://user-images.githubusercontent.com/104076975/175932783-0d3a1ea0-e6dc-4d9a-8227-739d23e63d51.png)
 
-![Screenshot from 2022-06-27 12-08-29](https://user-images.githubusercontent.com/104076975/175875291-fe84f64d-fe77-405e-ae94-be21c30e1718.png)
 
 
 ###### Credentials For Docker Hub Login
