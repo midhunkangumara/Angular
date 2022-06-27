@@ -544,7 +544,8 @@ Scroll all the way down on the Configure System page until you see the settings 
 
 5. To integrate Github goto Manage Jenkins → Configuration System ,
     scroll down to GitHub and under the github select Add github server and fillup the fields and select github credential
-    ![Screenshot from 2022-06-27 15-00-28](https://user-images.githubusercontent.com/104076975/175908055-6848ebb8-d2f1-4185-b079-483b34bfb544.png)
+    
+![github](https://user-images.githubusercontent.com/104076975/175937574-130343a9-c2d0-4ccd-b183-92c61080cf5f.png)
 
     
 
@@ -555,18 +556,19 @@ Scroll all the way down on the Configure System page until you see the settings 
  
  1. In the Dashboard jenkins click Manage jenkins → Manage nodes
  
- 
- ![Screenshot from 2022-06-27 14-23-47](https://user-images.githubusercontent.com/104076975/175900271-c176d256-5261-41db-8713-4503de5e7cf2.png)
+ ![anjs1](https://user-images.githubusercontent.com/104076975/175937617-d0023993-9b7a-488c-9bc1-190154cd2e7f.png)
+
 
  2. From the dashboad click on New Node ,give name of node 'WEB-SERVER' , mark 'Permanent Agent' the click on create
- 
-![Screenshot from 2022-06-27 14-31-07](https://user-images.githubusercontent.com/104076975/175901810-32bc0a55-0832-49a8-8b57-4153d5bb30b9.png)
-3. In the next page fill up the fields and save
-4. After saving you can see the node in the next page click on the node 
-5. Now you have to download 'jenkins-agent.jnlp' , 'agent.jar ' files
-  by clicking on 'LAUNCH' icon you can download 'jenkins-agent.jnlp' file and bu clicking on 'agent.jar' you can download 'agent.jar' file 
+ ![anjs2](https://user-images.githubusercontent.com/104076975/175937710-5de914d4-e7c3-4908-b468-093223c3b119.png)
+
+ 3. In the next page fill up the fields and save
+ 4. After saving you can see the node in the next page click on the node 
+ 5. Now you have to download 'jenkins-agent.jnlp' , 'agent.jar ' files
+    by clicking on 'LAUNCH' icon you can download 'jenkins-agent.jnlp' file and bu clicking on 'agent.jar' you can download 'agent.jar' file 
     
-![Screenshot from 2022-06-27 14-33-50](https://user-images.githubusercontent.com/104076975/175903207-7249bda7-f966-4ec7-b4f9-0f18b47dbe6b.png)
+    ![anjs3](https://user-images.githubusercontent.com/104076975/175937783-21f22977-adc0-4369-8a45-14c2e077f81c.png)
+
 
 6. Copy agent.jar , jenkins-agent.jnlp files to EC2 SERVER-1 and go  to the location of these file and ru the command that shown in the jenkin node page where you download agent.jar , jenkins-agent.jnlp files it will connect to jenkins server as node
 
