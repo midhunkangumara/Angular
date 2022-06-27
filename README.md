@@ -513,28 +513,29 @@ Scroll all the way down on the Configure System page until you see the settings 
 4. Click Global credentials (unrestricted) under the System heading.
 5. Click Add Credentials from the left.
 6. From the Kind field’s dropdown box select 'Username with password',complete the fields and click OK.
+7. 
+![cdhl](https://user-images.githubusercontent.com/104076975/175934111-eef73ba1-047c-4f98-968b-cbadb86a6e71.png)
 
-![Screenshot from 2022-06-27 12-18-18](https://user-images.githubusercontent.com/104076975/175876870-c044af9b-55c3-401e-b7e6-1257bca629cd.png)
 
 ###### Credentials For GitHub
 
  1. To add GitHub personal access token go to settings of your github account in the left side dashboard select Developer settings
 
-  ![Screenshot from 2022-06-27 12-29-09](https://user-images.githubusercontent.com/104076975/175878884-b8724575-bf12-4209-84f5-485cdc9e2723.png)
+![cfg1](https://user-images.githubusercontent.com/104076975/175934082-466ae1e5-07dc-4b0a-b616-e0ab181ea27c.png)
 
-2. Select Personal access tokens and select Generate new token
+2. Select Personal access tokens and select Generate new token.
 
-![Screenshot from 2022-06-27 12-31-26](https://user-images.githubusercontent.com/104076975/175879874-be0ecec3-75d9-4fef-acc3-03d59b606fbd.png)
+![cfg2](https://user-images.githubusercontent.com/104076975/175934155-3b766e67-93ba-40cd-8305-6460c237b83c.png)
 
 
 3.  Fill the 'note' section and select desired Expiration time and select repo in 'Select scopes' thenk click on Generate token
   
-  ![Screenshot from 2022-06-27 12-33-44](https://user-images.githubusercontent.com/104076975/175879906-edfb8a3b-7bed-4c60-a8dc-e1f0f51a87e3.png)
+  ![cfg3](https://user-images.githubusercontent.com/104076975/175934253-7cf98fb6-cf57-4ca5-ab07-bcd372832704.png)
 
- Copy the Personal access tokens
+ Copy the Personal access tokens.
 4.  In Jenkins create credential as secret text credental and seve
 
-![Screenshot from 2022-06-27 12-40-10](https://user-images.githubusercontent.com/104076975/175880470-07aca156-ee11-48e7-83a0-5f091eedf3e2.png)
+![cfg4](https://user-images.githubusercontent.com/104076975/175934294-5a1f1019-97c8-4f93-8483-72640a2f6866.png)
 
 5. To integrate Github goto Manage Jenkins → Configuration System ,
     scroll down to GitHub and under the github select Add github server and fillup the fields and select github credential
