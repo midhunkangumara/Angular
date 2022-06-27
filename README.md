@@ -421,3 +421,67 @@ Scroll all the way down on the Configure System page until you see the settings 
  • Default channel/member id: Enter the channel name (i.e. #channel) or user ID (i.e. UUU123UU4) you want the notification to be sent to.
  
    Once everything is filled out, click Save.
+   
+  #####  MANAGING CREDENTIALS IN JENKINS
+   
+   To add credentials in Jenkins:
+   
+  1. Click Manage Jenkins from the menu.
+  
+  2. Scroll down to the Security heading and click Manage Credentials.
+  
+   ![Screenshot from 2022-06-27 12-01-09](https://user-images.githubusercontent.com/104076975/175874319-3697b64a-7fef-4e87-8ccf-ed17891bc3d1.png)
+  
+  3. Click Jenkins under the Stores scoped to Jenkins heading.
+  4. 
+  ![Screenshot from 2022-06-27 12-06-27](https://user-images.githubusercontent.com/104076975/175875026-937e62de-dbdb-4e23-bf42-cee6feaba4e3.png)
+
+  
+  4. Click Global credentials (unrestricted) under the System heading.
+      
+   ![Screenshot from 2022-06-27 12-07-23](https://user-images.githubusercontent.com/104076975/175875132-0cb2d72f-5464-44a3-b4ec-25b9852ed109.png)
+
+  5. If no credentials exist, you can click the How about adding some credentials? link, otherwise click Add Credentials from the left.
+  6. Select the type of credentials you want to store from the Kind field’s dropdown box, complete the fields and click OK. You can add the following types      of credentials:
+      •  Usernames and passwords
+      •  SSH usernames and private keys
+      •  Secret files
+      •  Secret text
+      •  Certificates
+
+![Screenshot from 2022-06-27 12-07-54](https://user-images.githubusercontent.com/104076975/175875218-99cac4f6-6d95-491e-8c76-9262dd42d7cd.png)
+
+![Screenshot from 2022-06-27 12-08-29](https://user-images.githubusercontent.com/104076975/175875291-fe84f64d-fe77-405e-ae94-be21c30e1718.png)
+
+
+###### Credentials For Docker Hub Login
+
+1. Click Manage Jenkins from the menu.
+2. Scroll down to the Security heading and click Manage Credentials.
+3. Click Jenkins under the Stores scoped to Jenkins heading.
+4. Click Global credentials (unrestricted) under the System heading.
+5. Click Add Credentials from the left.
+6. From the Kind field’s dropdown box select 'Username with password',complete the fields and click OK.
+
+![Screenshot from 2022-06-27 12-18-18](https://user-images.githubusercontent.com/104076975/175876870-c044af9b-55c3-401e-b7e6-1257bca629cd.png)
+
+###### Credentials For GitHub
+
+ 1. To add GitHub personal access token go to settings of your github account in the left side dashboard select Developer settings
+
+  ![Screenshot from 2022-06-27 12-29-09](https://user-images.githubusercontent.com/104076975/175878884-b8724575-bf12-4209-84f5-485cdc9e2723.png)
+
+2. Select Personal access tokens and select Generate new token
+
+![Screenshot from 2022-06-27 12-31-26](https://user-images.githubusercontent.com/104076975/175879874-be0ecec3-75d9-4fef-acc3-03d59b606fbd.png)
+
+
+3.  Fill the 'note' section and select desired Expiration time and select repo in 'Select scopes' thenk click on Generate token
+  
+  ![Screenshot from 2022-06-27 12-33-44](https://user-images.githubusercontent.com/104076975/175879906-edfb8a3b-7bed-4c60-a8dc-e1f0f51a87e3.png)
+
+ Copy the Personal access tokens
+4.  In Jenkins create credential as secret text credental and seve
+
+![Screenshot from 2022-06-27 12-40-10](https://user-images.githubusercontent.com/104076975/175880470-07aca156-ee11-48e7-83a0-5f091eedf3e2.png)
+
