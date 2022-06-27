@@ -384,4 +384,40 @@ Step 4: Select that plugins and click on Install without restart button. You can
      • SSH Slave
      • Slack Notification Plugin Version 
      
+###### Slack-Jenkins Integration
+
+First, we need to configure slack on our machine.
+1. Create a slack account: https://slack.com/  if you haven't any
+2. configure the Jenkins integration: https://myspace.slack.com/services/new/jenkins-ci
+
+![s1](https://user-images.githubusercontent.com/104076975/175867481-7d602fab-a864-46a3-924f-32dd7d260f60.png)
+
+First, install ‘Jenkins-ci’ and then Add configuration and set channel and all thing like
+
+![s2](https://user-images.githubusercontent.com/104076975/175867549-fe471030-69c4-4d83-a9e5-64af03fd8f58.png)
+
+ 
+![s3](https://user-images.githubusercontent.com/104076975/175867555-fe52ff8b-573a-47db-a4d9-5ba35f136b64.png)
+
+After that, we need to set configuration on Jenkins Slack Notifications plugin.
+For Jenkins to notify slack, we need to install in Jenkins.Go to manage jenkins in dashboard then to Manage plugins and install Slack Notifications plugin.
+
+Connect Jenkins to your Slack : We will do this in Manage Jenkins → Configure System
+Scroll all the way down on the Configure System page until you see the settings for Slack.
+
+
+![Screenshot from 2022-06-27 11-21-07](https://user-images.githubusercontent.com/104076975/175868761-301017d6-eca0-42a4-a935-a29e9d6fd8eb.png)
+
+  •  Workspace: Your team’s workspace name.
+  • Credential:
+     - Click Add → Jenkins and a pop-up will appear.
+     - Under the Kind dropdown, select secret text.
      
+     Copy and paste your Slack Token into Secret, and click Add.
+     
+     If you forgot to save/copy your token, go to:
+     Slack app directory (https://<YOURWORKSPACE>.slack.com/apps/manage) → Jenkins CI → Configurations → Edit Configuration → Integration Settings
+    
+ • Default channel/member id: Enter the channel name (i.e. #channel) or user ID (i.e. UUU123UU4) you want the notification to be sent to.
+ 
+   Once everything is filled out, click Save.
