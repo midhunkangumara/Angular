@@ -407,21 +407,19 @@ Click Start using Jenkins to visit the main Jenkins dashboard:
 
  Step 1: To install a plugin, go to the Jenkins Dashboard and click on Manage Jenkins.
  
-![Screenshot from 2022-06-27 10-39-28](https://user-images.githubusercontent.com/104076975/175864386-110ca188-4298-474e-91bf-7739a51a974c.png)
 
-  
+  ![jip1](https://user-images.githubusercontent.com/104076975/175931526-e1944cec-b8cd-4acf-8429-327c7c0794e3.png)
+
 Step 2: Scroll down and select Manage Plugins.
 
+![jip2](https://user-images.githubusercontent.com/104076975/175931550-d23f242e-f492-437a-a785-91ed346349d5.png)
 
-![Screenshot from 2022-06-27 10-39-36](https://user-images.githubusercontent.com/104076975/175864402-9f6b6d7f-7f64-4e31-a402-1719f619248e.png)
 
 Step 3: Go to the Available tab and in the filter option, search for the plugins which you want to install.
 
- ![Screenshot from 2022-06-27 10-39-43](https://user-images.githubusercontent.com/104076975/175864521-06cdbf56-7a1d-4dd1-bff2-727edd9cb6e5.png)
-
 Step 4: Select that plugins and click on Install without restart button. You can also choose Download now and install after restart button.
 
-![Screenshot from 2022-06-27 10-43-48](https://user-images.githubusercontent.com/104076975/175864752-6c32cf8b-b15e-4ed6-840e-9915fe014515.png)
+![jip3](https://user-images.githubusercontent.com/104076975/175931626-77c2be1f-38c1-44f0-9318-b72f51608a53.png)
 
   Once the installation has been completed successfully, click on Go back to the top page link.
   
@@ -457,8 +455,8 @@ For Jenkins to notify slack, we need to install in Jenkins.Go to manage jenkins 
 Connect Jenkins to your Slack : We will do this in Manage Jenkins → Configure System
 Scroll all the way down on the Configure System page until you see the settings for Slack.
 
+![sl](https://user-images.githubusercontent.com/104076975/175931710-62c5c0e0-b598-4f76-b0b8-2a069ca9d02b.png)
 
-![Screenshot from 2022-06-27 11-21-07](https://user-images.githubusercontent.com/104076975/175868761-301017d6-eca0-42a4-a935-a29e9d6fd8eb.png)
 
   •  Workspace: Your team’s workspace name.
   • Credential:
