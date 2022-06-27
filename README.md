@@ -606,7 +606,7 @@ Scroll all the way down on the Configure System page until you see the settings 
          
    note: name of container image should be same as the DockerHub repository
    
-###### [ The script will run in the WEB-SERVER node where it will clone the github repository that we pushed from Local Server and docker will create container image by using docker file then by using dockerhub credential that we created earlier will use to login to the Dockerhub and the created image will be push to hub .Then docker will pull that image and  run it in the server (you can use different node here am using single node)]
+###### [ The script will run in the WEB-SERVER node where it will clone the github repository that we pushed from Local Server and docker will create container image by using docker file then by using dockerhub credential that we created earlier will use to login to the Dockerhub and the created image will be push to hub .Then docker will pull that image and  run it in the server (you can use different node here am using single node) The through Slack integration the script will send notifications to slack channel or user]
 
 ##### GITHUB WEBHOOK
 
@@ -630,4 +630,43 @@ Step 3: click on ‘Add webhook’.
 Step 5: In jenkins go configuration of our pipeline under 'Build Trigger' select 'GitHub hook trigger for GITScm polling ? '
 Step 6: If you are using pipeline script in Description you have to use that GitHub repository which we created the web hook
         if you are using script from that github repository the select Pipeline Script from SCM and choos that GitHub repository
+        
+ ##### BUILD STATUS NOTIFICATION
+ 
+ Here am using slack integration to sent status to a slack channel or member 
+ By using a script shown below the pipeline will use the Slack integration to sent status notification
+ 
+ 
+  
+  
+    node {
+              try {
+             notifyStarted()
+  
+           <....the build script....>
+           
+           
+                          notifySuccessful()
+           } catch (e) {
+             currentBuild.result = "FAILED"
+             notifyFailed()
+             throw e
+           }
+         }    
+         def notifyStarted() {
+          
+           slackSend (color: '#FFFF00', message: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
+         
+         }
+         def notifySuccessful() {
+           slackSend (color: '#00FF00', message: "SUCCESSFUL: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL}) 
+           Web URL: (http://44.202.241.246:80)")
+         }
+         
+         def notifyFailed() {
+           slackSend (color: '#FF0000', message: "FAILED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
+         
+         }
+         
+        
         
