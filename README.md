@@ -34,7 +34,7 @@
 
 ###### It is used to create local git reppo for keeping application coad , files and Dockerfile
 
-#### GIT 
+#### INSTALLING GIT 
 
 Updat your Repository:
 
@@ -157,7 +157,7 @@ List global git settings to confirm your git configuration:
   
 ### EC2 SERVER-1 (As A Worker Node For Jenkins To Host Container)(UBUNTU 20.04)
 
-#### DOCKER
+#### INSTALLING DOCKER
 
  To use the latest version of Docker, we will install it from the official Docker repository. So, start by adding the GPG key for the official Docker repository to your system, after that add the repository configuration to the APT source with the following commands.
  
@@ -214,7 +214,7 @@ To activate the changes to groups, run the following command:
        $ groups
        
        
-#### DOCKER HUB  ACCOUNT & REPOSITORY
+#### CREATING DOCKER HUB  ACCOUNT & REPOSITORY
   
   ###### Docker Hub Account
   
@@ -334,7 +334,7 @@ You will get the following output:
     OpenJDK Runtime Environment (build 11.0.15+10-Ubuntu-0ubuntu0.20.04.1)
     OpenJDK 64-Bit Server VM (build 11.0.15+10-Ubuntu-0ubuntu0.20.04.1, mixed mode, sharing)
     
-   #### JENKINS
+   #### INSTALLING JENKINS
  
 ###### Step 1 — Installing Jenkins
   
