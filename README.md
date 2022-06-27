@@ -485,3 +485,93 @@ Scroll all the way down on the Configure System page until you see the settings 
 
 ![Screenshot from 2022-06-27 12-40-10](https://user-images.githubusercontent.com/104076975/175880470-07aca156-ee11-48e7-83a0-5f091eedf3e2.png)
 
+
+### PIPELINE SETUP
+
+###### CRETING A PIPE LINE IN JENKINS
+ 
+ Here we are creating Scripted Jenkins pipeline
+ Once you are logged in to your Jenkins dashboard:
+ 
+ 1. Click on New item in Dash board
+ 2. Then give item name and select Pipeline option and click ok
+ 
+ 
+![Screenshot from 2022-06-27 13-04-54](https://user-images.githubusercontent.com/104076975/175885406-a5b94106-02e7-4c63-aad9-8d8bcd023fab.png)
+
+3. In the  next page select 'Pipeline' in the top bar
+   then click on 'Definition ' select 'pipeline sckript'
+   
+   
+![Screenshot from 2022-06-27 13-09-15](https://user-images.githubusercontent.com/104076975/175885994-e59a6000-46db-45ac-95fc-85120f17367a.png)
+
+4. You can copy past your pipeline script or you create it in the given space 
+   you can generate pipeline syntax for that click 'Pipeline Syntax' it will open a new page where you can generate pipe syntax
+   
+   pipeline script example :
+   
+   
+          
+         node {
+              try {
+             notifyStarted()
+         stage('cloning'){
+               checkout([
+                          $class: 'GitSCM',
+                          branches: [[name: 'main']],
+                          userRemoteConfigs: [[
+                             url: 'https://github.com/midhunkangumara/Angular.git',
+                             
+                          ]]
+                         ])
+             }
+         
+         stage("Docker build"){
+             sh 'docker version'
+             sh 'docker build -t angular-web .'
+             sh 'docker image list'
+             sh 'docker tag angular-web kmmidhun/angular-web:1'
+           }
+         stage("Docker Login"){
+                 withCredentials([string(credentialsId: 'DOCKER_HUB_PASSWORD', variable: 'PASSWORD')]) {
+                     sh 'docker login -u kmmidhun -p $PASSWORD'
+                 }
+             }
+         stage("Push Image to Docker Hub"){
+                 sh 'docker push  kmmidhun/angular-web:1'
+             }
+         
+          stage("pull image from repo"){
+                        sh 'pwd'
+                        sh 'hostnamectl'
+                        sh 'docker version'
+                        sh 'docker pull kmmidhun/angular-web:1'
+                        }
+          stage('running container'){
+                      sh 'docker stop myweb'
+                      sh 'docker run -d --rm --name myweb -p 80:80 kmmidhun/angular-web:1'
+                      }
+                        notifySuccessful()
+           } catch (e) {
+             currentBuild.result = "FAILED"
+             notifyFailed()
+             throw e
+           }
+         }    
+         def notifyStarted() {
+          
+           slackSend (color: '#FFFF00', message: "STARTED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
+         
+         }
+         def notifySuccessful() {
+           slackSend (color: '#00FF00', message: "SUCCESSFUL: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL}) Web URL: (http://44.202.241.246:80)")
+         }
+         
+         def notifyFailed() {
+           slackSend (color: '#FF0000', message: "FAILED: Job '${env.JOB_NAME} [${env.BUILD_NUMBER}]' (${env.BUILD_URL})")
+         
+         }
+         
+         
+         
+   
