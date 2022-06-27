@@ -23,14 +23,16 @@
    •  LOCAL SEVER (Local Git repository)(UBUNTU 20.04)
    
    •  EC2 SERVER-1 (As A Worker Node For Jenkins To Host Container)(UBUNTU 20.04)
-   
+           note: port 80 should added in inbound rule of the security group in aws or which port the Container will be exposed
+           
    •  EC2 SERVER-2 (As Jenkins Server)(UBUNTU 20.04)
+          note: port 8080 should added in inbound rule of the security group in aws for jenkins
    
 ## INSTALLATION AND SETUPS
 
 ### LOCAL SEVER (For Local Git repository)(UBUNTU 20.04)
 
-###### In local create local git reppo for keeping application coad , files and Dockerfile
+###### It is used to create local git reppo for keeping application coad , files and Dockerfile
 
 #### GIT 
 
@@ -211,9 +213,57 @@ To activate the changes to groups, run the following command:
        $ newgrp docker 
        $ groups
        
+       
+#### DOCKER HUB  ACCOUNT & REPOSITORY
   
-  #### Installing the Default JRE in Ubuntu
+  ###### Docker Hub Account
+  
+   1. Go to the Docker Hub signup page.
+
+   2. Enter a username that is also your Docker ID.
+
+    Your Docker ID must be between 4 and 30 characters long, and can only contain numbers and lowercase letters.
+
+   3. Enter a unique, valid email address.
+
+   4. Enter a password between 6 and 128 characters long.
+
+   5. Click Sign up.
+
+    Docker sends a verification email to the address you provided.
+
+   6. Click the link in the email to verify your address.
+  
+  • Once you register and verify your Docker ID email address, you can log in to Docker Hub and Docker Support.
+  
+  • You can also log in using the docker login command.When you use the docker login command, your credentials are stored in your home directory in             .docker/config.json. The password is base64 encoded in this file.
+  
+ ###### Docker Hub Repository
  
+ To create a repository, sign into Docker Hub, click on Repositories then Create Repository:
+ 
+ ![repos-create](https://user-images.githubusercontent.com/104076975/175922290-a5314307-bf58-4eea-82e5-1d4b3d38f4a0.png)
+
+  When creating a new repository:
+
+   • You can choose to put it in your Docker ID namespace, or in any organization where you are an owner.
+
+   • The repository name needs to be unique in that namespace, can be two to 255 characters, and can only contain lowercase letters, numbers, hyphens (-),       and underscores (_).
+   
+    Note: You cannot rename a Docker Hub repository once it has been created.
+    
+   • The description can be up to 100 characters and is used in the search result.
+   • You can link a GitHub or Bitbucket account now, or choose to do it later in the repository settings.
+   
+   ![repo-create-details](https://user-images.githubusercontent.com/104076975/175923022-9b8024c8-cae8-4ff1-b9f9-bbe8d1d6bd71.png)
+
+    After you hit the Create button, you can start using docker push to push images to this repository.
+    
+    Note: For pushing image you have to login from the terminal and the name of the repsitory and the name of the image should be same
+
+  #### Installing the Default JRE in Ubuntu 
+  (For connect this server as node to Jenkins server)
+  
  To install default Open JDK 11, first update the software package index:
  
         $ sudo apt update
