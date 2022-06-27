@@ -578,14 +578,13 @@ Scroll all the way down on the Configure System page until you see the settings 
  1. Click on New item in Dash board
  2. Then give item name and select Pipeline option and click ok
  
- 
-![Screenshot from 2022-06-27 13-04-54](https://user-images.githubusercontent.com/104076975/175885406-a5b94106-02e7-4c63-aad9-8d8bcd023fab.png)
+ ![pipelinesetup1](https://user-images.githubusercontent.com/104076975/175934460-f9aa45e1-13c3-4512-abbf-6f66c6871d6d.png)
 
 3. In the  next page select 'Pipeline' in the top bar
    then click on 'Definition ' select 'pipeline sckript'
    
-   
-![Screenshot from 2022-06-27 13-09-15](https://user-images.githubusercontent.com/104076975/175885994-e59a6000-46db-45ac-95fc-85120f17367a.png)
+   ![pls2](https://user-images.githubusercontent.com/104076975/175934484-1742a99c-7795-4320-81f2-52d25550e75d.png)
+
 
 4. You can copy past your pipeline script or you create it in the given space 
    you can generate pipeline syntax for that click 'Pipeline Syntax' it will open a new page where you can generate pipe syntax
