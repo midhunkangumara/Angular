@@ -210,11 +210,143 @@ To activate the changes to groups, run the following command:
        $ groups
        
   
- #### JAVA
+  #### Installing the Default JRE in Ubuntu
+ 
+ To install default Open JDK 11, first update the software package index:
+ 
+  $ sudo apt update
+  
+Next, check for Java installation on the system.
+  
+  $ java -version
+
+If Java is not currently installed, you will get the following output.
+
+    Command 'java' not found, but can be installed with:
+
+    sudo apt install openjdk-11-jre-headless  # version 11.0.10+9-0ubuntu1~20.04, or
+    sudo apt install default-jre              # version 2:1.11-72
+    sudo apt install openjdk-8-jre-headless   # version 8u282-b08-0ubuntu1~20.04
+    sudo apt install openjdk-13-jre-headless  # version 13.0.4+8-1~20.04
+    sudo apt install openjdk-14-jre-headless  # version 14.0.2+12-1~20.04
+    
+Now run the following command to install the default OpenJDK 11, which will provide Java Runtime Environment (JRE).
+
+  $ sudo apt install default-jre
+  
+Once Java installed, you can verify the installation with:
+
+   $ java -version
+   
+You will get the following output:
+
+    openjdk version "11.0.15" 2022-04-19
+    OpenJDK Runtime Environment (build 11.0.15+10-Ubuntu-0ubuntu0.20.04.1)
+    OpenJDK 64-Bit Server VM (build 11.0.15+10-Ubuntu-0ubuntu0.20.04.1, mixed mode, sharing)
+    
  
  
  ###  EC2 SERVER-2 (As Jenkins Server)(UBUNTU 20.04)
  
+ #### Installing the Default JRE in Ubuntu
  
+ To install default Open JDK 11, first update the software package index:
  
+  $ sudo apt update
+  
+Next, check for Java installation on the system.
+  
+  $ java -version
+
+If Java is not currently installed, you will get the following output.
+
+    Command 'java' not found, but can be installed with:
+
+    sudo apt install openjdk-11-jre-headless  # version 11.0.10+9-0ubuntu1~20.04, or
+    sudo apt install default-jre              # version 2:1.11-72
+    sudo apt install openjdk-8-jre-headless   # version 8u282-b08-0ubuntu1~20.04
+    sudo apt install openjdk-13-jre-headless  # version 13.0.4+8-1~20.04
+    sudo apt install openjdk-14-jre-headless  # version 14.0.2+12-1~20.04
+    
+Now run the following command to install the default OpenJDK 11, which will provide Java Runtime Environment (JRE).
+
+  $ sudo apt install default-jre
+  
+Once Java installed, you can verify the installation with:
+
+   $ java -version
+   
+You will get the following output:
+
+    openjdk version "11.0.15" 2022-04-19
+    OpenJDK Runtime Environment (build 11.0.15+10-Ubuntu-0ubuntu0.20.04.1)
+    OpenJDK 64-Bit Server VM (build 11.0.15+10-Ubuntu-0ubuntu0.20.04.1, mixed mode, sharing)
+    
+   #### JENKINS
  
+###### Step 1 — Installing Jenkins
+  
+  First, add the repository key to the system:
+  
+     $ curl -fsSL https://pkg.jenkins.io/debian-stable/jenkins.io.key | sudo tee /usr/share/keyrings/jenkins-keyring.asc > /dev/null
+    
+     $ echo deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc] https://pkg.jenkins.io/debian-stable binary/ | sudo tee /etc/apt/sources.list.d      /jenkins.list > /dev/null
+     
+     $ sudo apt-get update
+     
+     $ sudo apt-get install jenkins
+     
+###### Step 2 — Starting Jenkins
+        
+    start Jenkins by using systemctl:
+      
+      $ sudo systemctl start jenkins
+      
+   Since systemctl doesn’t display status output, we’ll use the status command to verify that Jenkins started successfully:
+   
+      $ sudo systemctl status jenkins
+      
+ ###### Step 3 — Opening the Firewall
+    
+    By default, Jenkins runs on port 8080. We’ll open that port using ufw:
+      
+       $ sudo ufw allow 8080
+       
+   Check ufw’s status to confirm the new rules:
+   
+       $ sudo ufw status
+       
+###### Step 4 — Setting Up Jenkins
+
+   To set up your installation, visit Jenkins on its default port, 8080, using your server domain name or IP address: http://your_server_ip_or_domain:8080
+   You should receive the Unlock Jenkins screen, which displays the location of the initial password:
+   
+  
+![jenkins1](https://user-images.githubusercontent.com/104076975/175861562-37d35604-d67b-4c5a-be4a-fb9e420c6143.png)
+
+In the terminal window, use the cat command to display the password:
+
+     $ sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+     
+ Copy the 32-character alphanumeric password from the terminal and paste it into the Administrator password field, then click Continue.
+ 
+ The next screen presents the option of installing suggested plugins or selecting specific plugins:
+ 
+ <img width="983" alt="jenkins2" src="https://user-images.githubusercontent.com/104076975/175861766-5feb5097-ea56-4d93-907f-b41675acd72e.png">
+
+  We’ll click the Install suggested plugins option, which will immediately begin the installation process.
+  
+<img width="982" alt="j3" src="https://user-images.githubusercontent.com/104076975/175861880-366f7aed-bf30-4f89-918a-0ab292ef5ab7.png">
+
+When the installation is complete, you’ll be prompted to set up the first administrative user. It’s possible to skip this step and continue as admin using the initial password we used above, but we’ll take a moment to create the user.
+
+<img width="1009" alt="j4" src="https://user-images.githubusercontent.com/104076975/175861962-2fa02ffe-4aff-4f63-9de8-f536b93a6331.png">
+
+Enter the name and password for your user,then save and continue
+
+You’ll receive an Instance Configuration page that will ask you to confirm the preferred URL for your Jenkins instance. Confirm either the domain name for your server or your server’s IP address:
+
+<img width="1015" alt="j5" src="https://user-images.githubusercontent.com/104076975/175862152-a4ed8b2e-7aba-4434-9777-72188a0444d9.png">
+
+After confirming the appropriate information, click Save and Finish. You’ll receive a confirmation page confirming that “Jenkins is Ready!”:
+Click Start using Jenkins to visit the main Jenkins dashboard:
