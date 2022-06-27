@@ -214,11 +214,11 @@ To activate the changes to groups, run the following command:
  
  To install default Open JDK 11, first update the software package index:
  
-  $ sudo apt update
+        $ sudo apt update
   
 Next, check for Java installation on the system.
-  
-  $ java -version
+   
+        $ java -version
 
 If Java is not currently installed, you will get the following output.
 
@@ -232,11 +232,11 @@ If Java is not currently installed, you will get the following output.
     
 Now run the following command to install the default OpenJDK 11, which will provide Java Runtime Environment (JRE).
 
-  $ sudo apt install default-jre
+         $ sudo apt install default-jre
   
 Once Java installed, you can verify the installation with:
 
-   $ java -version
+        $ java -version
    
 You will get the following output:
 
@@ -252,11 +252,11 @@ You will get the following output:
  
  To install default Open JDK 11, first update the software package index:
  
-  $ sudo apt update
+      $ sudo apt update
   
 Next, check for Java installation on the system.
   
-  $ java -version
+      $ java -version
 
 If Java is not currently installed, you will get the following output.
 
@@ -270,11 +270,11 @@ If Java is not currently installed, you will get the following output.
     
 Now run the following command to install the default OpenJDK 11, which will provide Java Runtime Environment (JRE).
 
-  $ sudo apt install default-jre
+      $ sudo apt install default-jre
   
 Once Java installed, you can verify the installation with:
 
-   $ java -version
+      $ java -version
    
 You will get the following output:
 
@@ -350,3 +350,38 @@ You’ll receive an Instance Configuration page that will ask you to confirm the
 
 After confirming the appropriate information, click Save and Finish. You’ll receive a confirmation page confirming that “Jenkins is Ready!”:
 Click Start using Jenkins to visit the main Jenkins dashboard:
+
+#### Jenkins - Installing Plugins
+
+ Step 1: To install a plugin, go to the Jenkins Dashboard and click on Manage Jenkins.
+ 
+![Screenshot from 2022-06-27 10-39-28](https://user-images.githubusercontent.com/104076975/175864386-110ca188-4298-474e-91bf-7739a51a974c.png)
+
+  
+Step 2: Scroll down and select Manage Plugins.
+
+
+![Screenshot from 2022-06-27 10-39-36](https://user-images.githubusercontent.com/104076975/175864402-9f6b6d7f-7f64-4e31-a402-1719f619248e.png)
+
+Step 3: Go to the Available tab and in the filter option, search for the plugins which you want to install.
+
+ ![Screenshot from 2022-06-27 10-39-43](https://user-images.githubusercontent.com/104076975/175864521-06cdbf56-7a1d-4dd1-bff2-727edd9cb6e5.png)
+
+Step 4: Select that plugins and click on Install without restart button. You can also choose Download now and install after restart button.
+
+![Screenshot from 2022-06-27 10-43-48](https://user-images.githubusercontent.com/104076975/175864752-6c32cf8b-b15e-4ed6-840e-9915fe014515.png)
+
+  Once the installation has been completed successfully, click on Go back to the top page link.
+  
+ ###### REQUIRED PLUGINS
+ 
+ Please install these following plugins if they are not installed (You have to inatall the jenkins suggested plugins in the begining)
+ 
+     • Pipeline
+     • Git 
+     • GitHub Branch Source
+     • Pipeline:GitHub Groovy Libraries
+     • SSH Slave
+     • Slack Notification Plugin Version 
+     
+     
