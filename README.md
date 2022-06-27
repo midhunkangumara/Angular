@@ -35,13 +35,19 @@
           
 ## WORK FLOW
 
-• Devlopers store the application code in git reppo in Local server and push to GitHub
-• It will trigger the pipeline in the JENKINS SERVER through Webhook
-• The pipeline scrit will run in WEB-HOST NODE ,it will pull the github reppo
-• From the reppo docker will use the Dockerfile to create image
-• Script will login to DockerHub from WEB-HOST NODE and push the localy created image
-• Then pull image frome the DockerHub and run it in WEB-HOST NODE 
-• Application will be oppend in port 80 of WEB-HOST NODE
+•  Devlopers store the application code in git reppo in Local server and push to GitHub .
+
+•  It will trigger the pipeline in the JENKINS SERVER through Webhook .
+
+•  The pipeline scrit will run in WEB-HOST NODE ,it will pull the github reppo
+
+•  From the reppo docker will use the Dockerfile to create image
+
+•  Script will login to DockerHub from WEB-HOST NODE and push the localy created image
+
+•  Then pull image frome the DockerHub and run it in WEB-HOST NODE 
+
+•  Application will be oppend in port 80 of WEB-HOST NODE
 
    
 ## INSTALLATION AND SETUPS
