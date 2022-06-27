@@ -30,6 +30,8 @@
 
 ### LOCAL SEVER (For Local Git repository)(UBUNTU 20.04)
 
+###### In local create local git reppo for keeping application coad , files and Dockerfile
+
 #### GIT 
 
 Updat your Repository:
@@ -512,7 +514,7 @@ Scroll all the way down on the Configure System page until you see the settings 
    
    
           
-         node {
+         node ('WEB-SERVER') {
               try {
              notifyStarted()
          stage('cloning'){
