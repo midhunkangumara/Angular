@@ -487,6 +487,36 @@ Scroll all the way down on the Configure System page until you see the settings 
 
 ![Screenshot from 2022-06-27 12-40-10](https://user-images.githubusercontent.com/104076975/175880470-07aca156-ee11-48e7-83a0-5f091eedf3e2.png)
 
+5. To integrate Github goto Manage Jenkins → Configuration System ,
+    scroll down to GitHub and under the github select Add github server and fillup the fields and select github credential
+    ![Screenshot from 2022-06-27 15-00-28](https://user-images.githubusercontent.com/104076975/175908055-6848ebb8-d2f1-4185-b079-483b34bfb544.png)
+
+    
+
+##### ADDING NODE TO JENKINS SERVER
+
+ If you want to run the script in another server you have to add it as a node .
+ Here EC2 SERVER-1 will be a Node 
+ 
+ 1. In the Dashboard jenkins click Manage jenkins → Manage nodes
+ 
+ 
+ ![Screenshot from 2022-06-27 14-23-47](https://user-images.githubusercontent.com/104076975/175900271-c176d256-5261-41db-8713-4503de5e7cf2.png)
+
+ 2. From the dashboad click on New Node ,give name of node 'WEB-SERVER' , mark 'Permanent Agent' the click on create
+ 
+![Screenshot from 2022-06-27 14-31-07](https://user-images.githubusercontent.com/104076975/175901810-32bc0a55-0832-49a8-8b57-4153d5bb30b9.png)
+3. In the next page fill up the fields and save
+4. After saving you can see the node in the next page click on the node 
+5. Now you have to download 'jenkins-agent.jnlp' , 'agent.jar ' files
+  by clicking on 'LAUNCH' icon you can download 'jenkins-agent.jnlp' file and bu clicking on 'agent.jar' you can download 'agent.jar' file 
+    
+![Screenshot from 2022-06-27 14-33-50](https://user-images.githubusercontent.com/104076975/175903207-7249bda7-f966-4ec7-b4f9-0f18b47dbe6b.png)
+
+6. Copy agent.jar , jenkins-agent.jnlp files to EC2 SERVER-1 and go  to the location of these file and ru the command that shown in the jenkin node page where you download agent.jar , jenkins-agent.jnlp files it will connect to jenkins server as node
+
+
+   
 
 ### PIPELINE SETUP
 
@@ -574,6 +604,30 @@ Scroll all the way down on the Configure System page until you see the settings 
          
          }
          
-         
-         
+   note: name of container image should be same as the DockerHub repository
    
+###### [ The script will run in the WEB-SERVER node where it will clone the github repository that we pushed from Local Server and docker will create container image by using docker file then by using dockerhub credential that we created earlier will use to login to the Dockerhub and the created image will be push to hub .Then docker will pull that image and  run it in the server (you can use different node here am using single node)]
+
+##### GITHUB WEBHOOK
+
+For triggering pipeline we are using GitHub WebHook.
+
+Step 1: go to your GitHub repository and click on ‘Settings’.
+   
+Step 2: Click on 'Webhooks' .
+
+Step 3: click on ‘Add webhook’.
+
+![Screenshot from 2022-06-27 15-11-47](https://user-images.githubusercontent.com/104076975/175911972-d76f569c-1961-4674-b3f5-166e88bc58c6.png)
+
+ Step 4: In the ‘Payload URL’ field, paste your Jenkins environment URL. At the end of this URL add /github-webhook/. In the ‘Content type’
+         select:‘application/json’ and leave the ‘Secret’ field empty. And you can choose 'Which events would you like to trigger this webhook? '
+         based on the event it will trigger pipeline
+
+  
+![Screenshot from 2022-06-27 15-16-04](https://user-images.githubusercontent.com/104076975/175913848-b0766d4f-4ef1-4ffd-ab03-0bf2b8cc7449.png)
+
+Step 5: In jenkins go configuration of our pipeline under 'Build Trigger' select 'GitHub hook trigger for GITScm polling ? '
+Step 6: If you are using pipeline script in Description you have to use that GitHub repository which we created the web hook
+        if you are using script from that github repository the select Pipeline Script from SCM and choos that GitHub repository
+        
