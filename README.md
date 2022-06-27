@@ -22,19 +22,22 @@
 
    •  LOCAL SEVER (Local Git repository)(UBUNTU 20.04)
    
-   •  EC2 SERVER-1 (As A Worker Node For Jenkins To Host Container)(UBUNTU 20.04)
-           note: port 80 should added in inbound rule of the security group in aws or which port the Container will be exposed
+   •  EC2 SERVER-1 (As A Worker Node For Jenkins To Host Container)(UBUNTU 20.04).
+   
+           Note: port 80 should added in inbound rule of the security group in aws or which port the Container will be exposed
            
-   •  EC2 SERVER-2 (As Jenkins Server)(UBUNTU 20.04)
-          note: port 8080 should added in inbound rule of the security group in aws for jenkins
+   •  EC2 SERVER-2 (As Jenkins Server)(UBUNTU 20.04).
+   
+          Note: port 8080 should added in inbound rule of the security group in aws for jenkins
    
 ## INSTALLATION AND SETUPS
 
 ### LOCAL SEVER (For Local Git repository)(UBUNTU 20.04)
 
-###### It is used to create local git reppo for keeping application coad , files and Dockerfile
+###### It is used to create local git reppo for keeping application code , files and Dockerfile
 
 #### INSTALLING GIT 
+[For Local Git Repository]
 
 Updat your Repository:
 
@@ -65,7 +68,7 @@ List global git settings to confirm your git configuration:
          
 
 #### CREATING GITHUB ACCOUNT
-
+[For to Push Local Git Reppo]
 
   1. Open https://github.com in a web browser, and then select Sign up.
   
@@ -158,6 +161,7 @@ List global git settings to confirm your git configuration:
 ### EC2 SERVER-1 (As A Worker Node For Jenkins To Host Container)(UBUNTU 20.04)
 
 #### INSTALLING DOCKER
+[For Creating Container Image]
 
  To use the latest version of Docker, we will install it from the official Docker repository. So, start by adding the GPG key for the official Docker repository to your system, after that add the repository configuration to the APT source with the following commands.
  
@@ -215,7 +219,7 @@ To activate the changes to groups, run the following command:
        
        
 #### CREATING DOCKER HUB  ACCOUNT & REPOSITORY
-  
+  [For to store localy created Image]
   ###### Docker Hub Account
   
    1. Go to the Docker Hub signup page.
@@ -262,7 +266,7 @@ To activate the changes to groups, run the following command:
     Note: For pushing image you have to login from the terminal and the name of the repsitory and the name of the image should be same
 
   #### Installing the Default JRE in Ubuntu 
-  (For connect this server as node to Jenkins server)
+  [For connect this server as node to Jenkins server]
   
  To install default Open JDK 11, first update the software package index:
  
@@ -335,6 +339,7 @@ You will get the following output:
     OpenJDK 64-Bit Server VM (build 11.0.15+10-Ubuntu-0ubuntu0.20.04.1, mixed mode, sharing)
     
    #### INSTALLING JENKINS
+ [For CI/CD]
  
 ###### Step 1 — Installing Jenkins
   
