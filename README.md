@@ -22,13 +22,24 @@
 
    •  LOCAL SEVER (Local Git repository)(UBUNTU 20.04)
    
-   •  EC2 SERVER-1 (As A Worker Node For Jenkins To Host Container)(UBUNTU 20.04).
+   •  WEB-SERVER NODE (As A Worker Node For Jenkins To Host Container)(UBUNTU 20.04)(EC2 server).
    
            Note: port 80 should added in inbound rule of the security group in aws or which port the Container will be exposed
            
-   •  EC2 SERVER-2 (As Jenkins Server)(UBUNTU 20.04).
+   •  JENKINS SERVER (As Jenkins Server)(UBUNTU 20.04)(EC2 server).
    
           Note: port 8080 should added in inbound rule of the security group in aws for jenkins
+          
+## WORK FLOW
+
+• Devlopers store the application code in git reppo in Local server and push to GitHub
+• It will trigger the pipeline in the JENKINS SERVER through Webhook
+• The pipeline scrit will run in WEB-HOST NODE ,it will pull the github reppo
+• From the reppo docker will use the Dockerfile to create image
+• Script will login to DockerHub from WEB-HOST NODE and push the localy created image
+• Then pull image frome the DockerHub and run it in WEB-HOST NODE 
+• Application will be oppend in port 80 of WEB-HOST NODE
+
    
 ## INSTALLATION AND SETUPS
 
@@ -158,7 +169,7 @@ List global git settings to confirm your git configuration:
   The -u flag sets the remote origin as the default. This lets you later easily just do git push and git pull without having to specifying an origin since we always want GitHub in this case.
   
   
-### EC2 SERVER-1 (As A Worker Node For Jenkins To Host Container)(UBUNTU 20.04)
+### WEB-SERVER NODE (As A Worker Node For Jenkins To Host Container)(UBUNTU 20.04)
 
 #### INSTALLING DOCKER
 [For Creating Container Image]
@@ -302,7 +313,7 @@ You will get the following output:
     
  
  
- ###  EC2 SERVER-2 (As Jenkins Server)(UBUNTU 20.04)
+ ###  JENKINS SERVER (As Jenkins Server)(UBUNTU 20.04)
  
  #### Installing the Default JRE in Ubuntu
  
@@ -552,7 +563,7 @@ Scroll all the way down on the Configure System page until you see the settings 
 ##### ADDING NODE TO JENKINS SERVER
 
  If you want to run the script in another server you have to add it as a node .
- Here EC2 SERVER-1 will be a Node 
+ Here WEB-HOST NODE will be a Node 
  
  1. In the Dashboard jenkins click Manage jenkins → Manage nodes
  
@@ -662,7 +673,7 @@ Scroll all the way down on the Configure System page until you see the settings 
          
    note: name of container image should be same as the DockerHub repository
    
-###### [ The script will run in the WEB-SERVER node where it will clone the github repository that we pushed from Local Server and docker will create container image by using docker file then by using dockerhub credential that we created earlier will use to login to the Dockerhub and the created image will be push to hub .Then docker will pull that image and  run it in the server (you can use different node here am using single node) The through Slack integration the script will send notifications to slack channel or user]
+###### [ The script will run in the WEB-SERVER NODE where it will clone the github repository that we pushed from Local Server and docker will create container image by using docker file then by using dockerhub credential that we created earlier will use to login to the Dockerhub and the created image will be push to hub .Then docker will pull that image and  run it in the server (you can use different node here am using single node) The through Slack integration the script will send notifications to slack channel or user]
 
 ##### GITHUB WEBHOOK
 
