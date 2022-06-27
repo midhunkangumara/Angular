@@ -29,6 +29,9 @@
    •  JENKINS SERVER (As Jenkins Server)(UBUNTU 20.04)(EC2 server).
    
           Note: port 8080 should added in inbound rule of the security group in aws for jenkins
+#### MY REPPO :       
+
+              https://github.com/midhunkangumara/Angular
           
 ## WORK FLOW
 
