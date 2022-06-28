@@ -748,3 +748,5 @@ Step 6: If you are using pipeline script in Description you have to use that Git
          
         
         
+  We can overwrite the default notification reciever by adding 'channel: #channel id/member id '      
+        
