@@ -49,6 +49,8 @@
 
 •  Application will be oppend in port 80 of WEB-HOST NODE
 
+• Jenkins will send a status report of the build/pipeline as a slack notification
+
    
 ## INSTALLATION AND SETUPS
 
